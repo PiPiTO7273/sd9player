@@ -1,4 +1,6 @@
 #include"hsp3utf.as"
+#packopt hide 1
+#packopt icon "sd9.ico"
 
 screen 0,320,180
 title"ôôsd9playerôô"
