@@ -1,0 +1,38 @@
+#include"hsp3utf.as"
+
+screen 0,320,180
+title"ÅÙÅÙsd9playerÅÙÅÙ"
+
+color 200,200,200
+circle ginfo(12)/2-50,10,ginfo(12)/2+50,10+100
+color 230,230,230
+circle ginfo(12)/2-50+2,10+2,ginfo(12)/2+50-2,10+100-2
+color 255,255,255
+circle ginfo(12)/2-8,10+50-8,ginfo(12)/2+8,10+50+8
+
+objsize 100,40
+pos ginfo(12)/2-100/2,ginfo(13)-60:button gosub"ÅÙPlayÅÙ",*play
+pos ginfo(12)/2-100/2-100,ginfo(13)-60:button gosub"< Convert >",*save
+pos ginfo(12)/2-100/2+100,ginfo(13)-60:button gosub"Exit :)",*exit
+stop
+*play
+	dialog"sd9",16,"konami sd9"
+	if stat==0 :return
+	exist refstr
+	sdim buf,strsize
+	bload refstr,buf
+	memfile buf,32,varsize(buf)-32
+	mmload"MEM:sd9.wav",0
+	mmplay 0
+	return
+*save
+	dialog"sd9",16,"konami sd9"
+	if stat==0 :return
+	exist refstr
+	sdim buf,strsize
+	bload refstr,buf
+	bsave refstr+".wav",buf,varsize(buf)-32,32
+	dialog"Done! XD",0,""
+	return
+*exit
+	end
